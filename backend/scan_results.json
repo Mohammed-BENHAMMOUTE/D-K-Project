@@ -1,0 +1,215 @@
+{
+  "SchemaVersion": 2,
+  "CreatedAt": "2024-11-30T23:11:34.599103974Z",
+  "ArtifactName": "mohammedbenhammout/backend:1.0",
+  "ArtifactType": "container_image",
+  "Metadata": {
+    "OS": {
+      "Family": "alpine",
+      "Name": "3.20.3"
+    },
+    "ImageID": "sha256:ce89061d0dc4ad94969fb2ec87513d1893a8f672c4ebdc9ec6d440c96b894107",
+    "DiffIDs": [
+      "sha256:75654b8eeebd3beae97271a102f57cdeb794cc91e442648544963a7e951e9558",
+      "sha256:dfc91b7f762052922f04900a2b805064ec8b26e510eef76c70b5060f6be37425",
+      "sha256:a5729e07101c9cae69e96ba1f98410f396ebf0b8525d79e45564ddce1739a270",
+      "sha256:21cf7d294a3a49b79fd3d8e0a83b51c7c381500075e0a34a4e91d46dd26891f9",
+      "sha256:8fba85eb2e696a153cba1395023f60b990f4d90d24fc50bdc5f380e1733fd858",
+      "sha256:e5ac8be622e5965d75066cbb16287b229ef3bd1a4b59717697f5697fb1147c76",
+      "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "sha256:ecff414ccef30912ee5da104589542fbb8abf5945a21bf69d3393f8fd5c00912"
+    ],
+    "RepoTags": [
+      "mohammedbenhammout/backend:1.0"
+    ],
+    "ImageConfig": {
+      "architecture": "amd64",
+      "created": "2024-11-30T21:50:23.203711524Z",
+      "history": [
+        {
+          "created": "2024-09-06T12:05:36Z",
+          "created_by": "ADD alpine-minirootfs-3.20.3-x86_64.tar.gz / # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2024-09-06T12:05:36Z",
+          "created_by": "CMD [\"/bin/sh\"]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-10-23T15:41:32Z",
+          "created_by": "ENV JAVA_HOME=/opt/java/openjdk",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-10-23T15:41:32Z",
+          "created_by": "ENV PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-10-23T15:41:32Z",
+          "created_by": "ENV LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-10-23T15:41:32Z",
+          "created_by": "RUN /bin/sh -c set -eux;     apk add --no-cache         fontconfig ttf-dejavu         gnupg         ca-certificates p11-kit-trust         musl-locales musl-locales-lang         tzdata         coreutils         openssl     ;     rm -rf /var/cache/apk/* # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2024-10-23T15:41:32Z",
+          "created_by": "ENV JAVA_VERSION=jdk-17.0.13+11",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-10-23T15:41:32Z",
+          "created_by": "RUN /bin/sh -c set -eux;     ARCH=\"$(apk --print-arch)\";     case \"${ARCH}\" in        x86_64)          ESUM='7a2df4e2f86eca649af1e17d990ab8e354cb6dee389606025b9d05f75623c388';          BINARY_URL='https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.13%2B11/OpenJDK17U-jre_x64_alpine-linux_hotspot_17.0.13_11.tar.gz';          ;;        *)          echo \"Unsupported arch: ${ARCH}\";          exit 1;          ;;     esac;     wget -O /tmp/openjdk.tar.gz ${BINARY_URL};     wget -O /tmp/openjdk.tar.gz.sig ${BINARY_URL}.sig;     export GNUPGHOME=\"$(mktemp -d)\";     gpg --batch --keyserver keyserver.ubuntu.com --recv-keys 3B04D753C9050D9A5D343F39843C48A565F8F04B;     gpg --batch --verify /tmp/openjdk.tar.gz.sig /tmp/openjdk.tar.gz;     rm -r \"${GNUPGHOME}\" /tmp/openjdk.tar.gz.sig;     echo \"${ESUM} */tmp/openjdk.tar.gz\" | sha256sum -c -;     mkdir -p \"$JAVA_HOME\";     tar --extract         --file /tmp/openjdk.tar.gz         --directory \"$JAVA_HOME\"         --strip-components 1         --no-same-owner     ;     rm -f /tmp/openjdk.tar.gz ${JAVA_HOME}/lib/src.zip; # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2024-10-23T15:41:32Z",
+          "created_by": "RUN /bin/sh -c set -eux;     echo \"Verifying install ...\";     echo \"java --version\"; java --version;     echo \"Complete.\" # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2024-10-23T15:41:32Z",
+          "created_by": "COPY --chmod=755 entrypoint.sh /__cacert_entrypoint.sh # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2024-10-23T15:41:32Z",
+          "created_by": "ENTRYPOINT [\"/__cacert_entrypoint.sh\"]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-11-30T21:33:49Z",
+          "created_by": "LABEL maintainer=Mohammed Benhammoute \u003cmohammedbenhammoute@gmail.com\u003e version=1.0 description=Spring Boot Application Runtime",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-11-30T21:33:49Z",
+          "created_by": "RUN /bin/sh -c addgroup -S spring \u0026\u0026 adduser -S spring -G spring \u0026\u0026     apk add --no-cache dumb-init=1.2.5-r3 curl=8.11.0-r2 \u0026\u0026     mkdir -p /app \u0026\u0026     chown spring:spring /app # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2024-11-30T21:33:49Z",
+          "created_by": "WORKDIR /app",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2024-11-30T21:50:23Z",
+          "created_by": "COPY --chown=spring:spring /build/target/*.jar app.jar # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2024-11-30T21:50:23Z",
+          "created_by": "ENV JAVA_OPTS=-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0 SPRING_PROFILES_ACTIVE=prod",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-11-30T21:50:23Z",
+          "created_by": "USER spring:spring",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-11-30T21:50:23Z",
+          "created_by": "EXPOSE map[8080/tcp:{}]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-11-30T21:50:23Z",
+          "created_by": "HEALTHCHECK \u0026{[\"CMD-SHELL\" \"curl -f http://localhost:8080/actuator/health || exit 1\"] \"30s\" \"5s\" \"30s\" \"0s\" '\\x03'}",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-11-30T21:50:23Z",
+          "created_by": "ENTRYPOINT [\"/usr/bin/dumb-init\" \"--\"]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-11-30T21:50:23Z",
+          "created_by": "CMD [\"sh\" \"-c\" \"java $JAVA_OPTS -jar app.jar\"]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        }
+      ],
+      "os": "linux",
+      "rootfs": {
+        "type": "layers",
+        "diff_ids": [
+          "sha256:75654b8eeebd3beae97271a102f57cdeb794cc91e442648544963a7e951e9558",
+          "sha256:dfc91b7f762052922f04900a2b805064ec8b26e510eef76c70b5060f6be37425",
+          "sha256:a5729e07101c9cae69e96ba1f98410f396ebf0b8525d79e45564ddce1739a270",
+          "sha256:21cf7d294a3a49b79fd3d8e0a83b51c7c381500075e0a34a4e91d46dd26891f9",
+          "sha256:8fba85eb2e696a153cba1395023f60b990f4d90d24fc50bdc5f380e1733fd858",
+          "sha256:e5ac8be622e5965d75066cbb16287b229ef3bd1a4b59717697f5697fb1147c76",
+          "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+          "sha256:ecff414ccef30912ee5da104589542fbb8abf5945a21bf69d3393f8fd5c00912"
+        ]
+      },
+      "config": {
+        "Cmd": [
+          "sh",
+          "-c",
+          "java $JAVA_OPTS -jar app.jar"
+        ],
+        "Healthcheck": {
+          "Test": [
+            "CMD-SHELL",
+            "curl -f http://localhost:8080/actuator/health || exit 1"
+          ],
+          "Interval": 30000000000,
+          "Timeout": 5000000000,
+          "StartPeriod": 30000000000,
+          "Retries": 3
+        },
+        "Entrypoint": [
+          "/usr/bin/dumb-init",
+          "--"
+        ],
+        "Env": [
+          "PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+          "JAVA_HOME=/opt/java/openjdk",
+          "LANG=en_US.UTF-8",
+          "LANGUAGE=en_US:en",
+          "LC_ALL=en_US.UTF-8",
+          "JAVA_VERSION=jdk-17.0.13+11",
+          "JAVA_OPTS=-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0",
+          "SPRING_PROFILES_ACTIVE=prod"
+        ],
+        "Labels": {
+          "description": "Spring Boot Application Runtime",
+          "maintainer": "Mohammed Benhammoute \u003cmohammedbenhammoute@gmail.com\u003e",
+          "version": "1.0"
+        },
+        "User": "spring:spring",
+        "WorkingDir": "/app",
+        "ArgsEscaped": true
+      }
+    }
+  },
+  "Results": [
+    {
+      "Target": "mohammedbenhammout/backend:1.0 (alpine 3.20.3)",
+      "Class": "os-pkgs",
+      "Type": "alpine"
+    },
+    {
+      "Target": "Java",
+      "Class": "lang-pkgs",
+      "Type": "jar"
+    }
+  ]
+}

@@ -71,4 +71,4 @@ ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 # Best Practice: Use CMD to define default command with environment variable expansion for flexibility
 CMD ["sh", "-c", "java $JAVA_OPTS -jar app.jar"]
 
-# please check the .dockerignore file to exclude unnecessary files from the context
+# please check the .dockerignore file where I exclude unnecessary files from the context
