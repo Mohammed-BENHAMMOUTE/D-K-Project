@@ -1,0 +1,27 @@
+# Ignore Maven build files
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Ignore temporary files
+*.log
+*.tmp
+
+# Ignore IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore other unnecessary files
+*.class
+*.jar
+*.war
+*.ear
