@@ -1,0 +1,20 @@
+services:
+  postgres:
+    container_name: postgres-container    
+    image: postgres:15-alpine
+    networks:
+      - nockNock                        
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: admin               
+      POSTGRES_PASSWORD: admin123        
+      POSTGRES_DB: my_database          
+    volumes:
+      - postgres_data:/var/lib/postgresql/data    
+
+networks:
+  nockNock:                             
+
+volumes:
+  postgres_data:                        
