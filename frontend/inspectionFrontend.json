@@ -1,0 +1,287 @@
+[
+    {
+        "Id": "9c2a45f1c35ae7b930ee948fa47cf6ee69d3e4cfbded10b299dba04717064942",
+        "Created": "2024-12-01T15:28:04.834793033Z",
+        "Path": "/usr/bin/dumb-init",
+        "Args": [
+            "--",
+            "nginx",
+            "-g",
+            "daemon off;"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 743654,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2024-12-01T15:28:05.120129183Z",
+            "FinishedAt": "0001-01-01T00:00:00Z",
+            "Health": {
+                "Status": "healthy",
+                "FailingStreak": 0,
+                "Log": [
+                    {
+                        "Start": "2024-12-01T15:35:11.896280338Z",
+                        "End": "2024-12-01T15:35:11.997221271Z",
+                        "ExitCode": 0,
+                        "Output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <link rel=\"icon\" type=\"image/svg+xml\" href=\"/vite.svg\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Vite + React + TS</title>\n    <script type=\"module\" crossorigin src=\"/assets/index-CIs_xok3.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-DmuDc2Fy.css\">\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n\r100   464  100   464    0     0   416k      0 --:--:-- --:--:-- --:--:--  453k\n"
+                    },
+                    {
+                        "Start": "2024-12-01T15:35:41.999899443Z",
+                        "End": "2024-12-01T15:35:42.097024103Z",
+                        "ExitCode": 0,
+                        "Output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100   464  100   464    0     0   359k      0 --:--:-- --:--:-- --:--:--  453<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <link rel=\"icon\" type=\"image/svg+xml\" href=\"/vite.svg\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Vite + React + TS</title>\n    <script type=\"module\" crossorigin src=\"/assets/index-CIs_xok3.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-DmuDc2Fy.css\">\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\nk\n"
+                    },
+                    {
+                        "Start": "2024-12-01T15:36:12.098862774Z",
+                        "End": "2024-12-01T15:36:12.191995976Z",
+                        "ExitCode": 0,
+                        "Output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <link rel=\"icon\" type=\"image/svg+xml\" href=\"/vite.svg\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Vite + React + TS</title>\n    <script type=\"module\" crossorigin src=\"/assets/index-CIs_xok3.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-DmuDc2Fy.css\">\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n\r100   464  100   464    0     0   378k      0 --:--:-- --:--:-- --:--:--  453k\n"
+                    },
+                    {
+                        "Start": "2024-12-01T15:36:42.194179289Z",
+                        "End": "2024-12-01T15:36:42.306790109Z",
+                        "ExitCode": 0,
+                        "Output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <link rel=\"icon\" type=\"image/svg+xml\" href=\"/vite.svg\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Vite + React + TS</title>\n    <script type=\"module\" crossorigin src=\"/assets/index-CIs_xok3.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-DmuDc2Fy.css\">\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n\r100   464  100   464    0     0   353k      0 --:--:-- --:--:-- --:--:--  453k\n"
+                    },
+                    {
+                        "Start": "2024-12-01T15:37:12.309097635Z",
+                        "End": "2024-12-01T15:37:12.397802995Z",
+                        "ExitCode": 0,
+                        "Output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <link rel=\"icon\" type=\"image/svg+xml\" href=\"/vite.svg\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Vite + React + TS</title>\n    <script type=\"module\" crossorigin src=\"/assets/index-CIs_xok3.js\"></script>\n    <link rel=\"stylesheet\" crossorigin href=\"/assets/index-DmuDc2Fy.css\">\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n\r100   464  100   464    0     0   365k      0 --:--:-- --:--:-- --:--:--  453k\n"
+                    }
+                ]
+            }
+        },
+        "Image": "sha256:b68e76de8a56823eefaef864e8820ffd1edf563c5d433313b99f5480fbb82527",
+        "ResolvConfPath": "/var/lib/docker/containers/9c2a45f1c35ae7b930ee948fa47cf6ee69d3e4cfbded10b299dba04717064942/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/9c2a45f1c35ae7b930ee948fa47cf6ee69d3e4cfbded10b299dba04717064942/hostname",
+        "HostsPath": "/var/lib/docker/containers/9c2a45f1c35ae7b930ee948fa47cf6ee69d3e4cfbded10b299dba04717064942/hosts",
+        "LogPath": "/var/lib/docker/containers/9c2a45f1c35ae7b930ee948fa47cf6ee69d3e4cfbded10b299dba04717064942/9c2a45f1c35ae7b930ee948fa47cf6ee69d3e4cfbded10b299dba04717064942-json.log",
+        "Name": "/frontend",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "system_u:object_r:container_file_t:s0:c873,c991",
+        "ProcessLabel": "system_u:system_r:container_t:s0:c873,c991",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "mynetwork",
+            "PortBindings": {
+                "80/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "3000"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                27,
+                166
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": [],
+            "BlkioDeviceWriteBps": [],
+            "BlkioDeviceReadIOps": [],
+            "BlkioDeviceWriteIOps": [],
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": [],
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/1304e2fbaf828c385c90670ee35783887386d8e9d00388c7efec31db61709842-init/diff:/var/lib/docker/overlay2/lqvjpwaelgj3ugubai7491206/diff:/var/lib/docker/overlay2/hn2su3sxr791yrcghvyqcwfe4/diff:/var/lib/docker/overlay2/78rafwz02tz44lmwfpkzg3ude/diff:/var/lib/docker/overlay2/otjmykksctletftubbmfswe23/diff:/var/lib/docker/overlay2/osrbvpaigj4qvfgw3wz7xwlce/diff:/var/lib/docker/overlay2/9b2ae4e24d2919812bb8d40c2e882362fc45d3f28a6a28bf6bccc1462abe7462/diff:/var/lib/docker/overlay2/d9e3937ea7993e7282ecd85d277f3ca80220bd90eaaa6a67f61021aac632ef35/diff:/var/lib/docker/overlay2/a929bd09d2a0a271210191d846eb0cc06cabe60eae195f56d6aac970f7fdfe5e/diff:/var/lib/docker/overlay2/a7c3f426512e6cdc2a3a22e4fa6c2508a53eb51ac7262a6cc6a905fbb8352017/diff:/var/lib/docker/overlay2/a46185a8b60927622d19f737dbffdcbea8b813e0331371d2bbe62613db171159/diff:/var/lib/docker/overlay2/ad902d1a75c1a8cc3f16486ef4a76e5369656bc48dca3f9e7168b2085d8fdc0e/diff:/var/lib/docker/overlay2/4eae879d6c08dff567f992e6ae5ab7f226b1eaed38fe7506ac86cc6213d80be7/diff:/var/lib/docker/overlay2/073ee5b8e2f3c1648542aef52740d26a811f2eef3021d4b1176e48f344645410/diff",
+                "MergedDir": "/var/lib/docker/overlay2/1304e2fbaf828c385c90670ee35783887386d8e9d00388c7efec31db61709842/merged",
+                "UpperDir": "/var/lib/docker/overlay2/1304e2fbaf828c385c90670ee35783887386d8e9d00388c7efec31db61709842/diff",
+                "WorkDir": "/var/lib/docker/overlay2/1304e2fbaf828c385c90670ee35783887386d8e9d00388c7efec31db61709842/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [],
+        "Config": {
+            "Hostname": "9c2a45f1c35a",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "80/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "NGINX_VERSION=1.26.2",
+                "PKG_RELEASE=1",
+                "DYNPKG_RELEASE=2",
+                "NJS_VERSION=0.8.5",
+                "NJS_RELEASE=1"
+            ],
+            "Cmd": [
+                "nginx",
+                "-g",
+                "daemon off;"
+            ],
+            "Healthcheck": {
+                "Test": [
+                    "CMD-SHELL",
+                    "curl -f http://localhost:80 || exit 1"
+                ],
+                "Interval": 30000000000,
+                "Timeout": 5000000000,
+                "StartPeriod": 30000000000,
+                "Retries": 3
+            },
+            "Image": "mohammedbenhammoute/frontend:1.0",
+            "Volumes": null,
+            "WorkingDir": "/",
+            "Entrypoint": [
+                "/usr/bin/dumb-init",
+                "--"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "description": "React Frontend Application Runtime",
+                "email": "mohammedbenhammoute@gmail.com",
+                "maintainer": "Mohammed Benhammoute",
+                "version": "1.0"
+            },
+            "StopSignal": "SIGQUIT"
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "a9161738aa70cd7372aaab21aadd9fa7f9c09d9ecbcddf62863003f4093ad3c0",
+            "SandboxKey": "/var/run/docker/netns/a9161738aa70",
+            "Ports": {
+                "80/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "3000"
+                    },
+                    {
+                        "HostIp": "::",
+                        "HostPort": "3000"
+                    }
+                ]
+            },
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "mynetwork": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "MacAddress": "02:42:ac:1a:00:04",
+                    "DriverOpts": null,
+                    "NetworkID": "26873d562f02670d35037d152543d890504e2a2f79cab9a3bb837360ed67b65d",
+                    "EndpointID": "4023b1ffec6c54301346c35b4e159ada2e376d316042a6987dc0421497884caa",
+                    "Gateway": "172.26.0.1",
+                    "IPAddress": "172.26.0.4",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": [
+                        "frontend",
+                        "9c2a45f1c35a"
+                    ]
+                }
+            }
+        }
+    }
+]
