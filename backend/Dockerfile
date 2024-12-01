@@ -4,9 +4,10 @@
 FROM maven:3.9.9-eclipse-temurin-17-alpine@sha256:bff43a9e4b4365b986c8e5050b9e5a5f1b1c6729365beb42c5a5f7cf2009a4e7 AS builder
 
 # Metadata Labels for better image management
-LABEL maintainer="Mohammed Benhammoute <mohammedbenhammoute@gmail.com>" \
+LABEL maintainer="Mohammed Benhammoute" \
       version="1.0" \
-      description="Spring Boot Application"
+      description="Spring Boot Application" \
+      email="mohammedbenhammoute@gmail.com"
 
 # Best Practice: Create a non-root user and set up Maven repository with correct permissions
 # one layer to minimize image size
@@ -40,6 +41,7 @@ LABEL maintainer="Mohammed Benhammoute <mohammedbenhammoute@gmail.com>" \
       description="Spring Boot Application Runtime"
 
 # Best Practice: Create a non-root user and install essential packages in one layer to minimize image size
+# single layer for lighter image size
 RUN addgroup -S spring && adduser -S spring -G spring && \
     apk add --no-cache dumb-init=1.2.5-r3 curl=8.11.0-r2 && \
     mkdir -p /app && \
@@ -61,6 +63,14 @@ USER spring:spring
 # Best Practice: Document exposed ports and their purpose
 EXPOSE 8080
 
+#setting environment variables for database connection, i used these in application.yml as arguments
+ENV DB_HOST=postgres-container \
+    DB_PORT=5432 \
+    DB_NAME=my_database \
+    DB_USER=postgres \
+    DB_PASSWORD=postgres123
+
+
 # Best Practice: Implement a HEALTHCHECK to monitor application health and ensure container orchestration can manage it effectively
 HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \
     CMD curl -f http://localhost:8080/actuator/health || exit 1
@@ -70,5 +80,4 @@ ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
 # Best Practice: Use CMD to define default command with environment variable expansion for flexibility
 CMD ["sh", "-c", "java $JAVA_OPTS -jar app.jar"]
-
 # please check the .dockerignore file where I exclude unnecessary files from the context
