@@ -1,0 +1,61 @@
+services:
+  frontend:
+    image: localhost:5000/frontend:1.0
+    container_name: frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+    networks:
+      - app-network
+
+  backend:
+    image: localhost:5000/backend:latest
+    container_name: backend-container
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_HOST=postgres-container
+      - DB_PORT=5432
+      - DB_NAME=my_database
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres123
+      - SPRING_PROFILES_ACTIVE=prod
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - app-network
+
+  postgres:
+    image: localhost:5000/postgres:17.alpine
+    container_name: postgres-container
+    environment:
+      - POSTGRES_DB=my_database
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+
+volumes:
+  postgres_data:
+    name: postgres_data
+
+networks:
+  app-network:
+    name: app-network
+    driver: bridge
