@@ -1,0 +1,292 @@
+[
+    {
+        "Id": "d548c983a92b35e6dae8a6cf0a37f50fdc464661546e121b08013a17d0f8eaea",
+        "Created": "2024-12-01T11:09:29.08452447Z",
+        "Path": "/usr/bin/dumb-init",
+        "Args": [
+            "--",
+            "sh",
+            "-c",
+            "java $JAVA_OPTS -jar app.jar"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 580490,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2024-12-01T11:09:29.295958641Z",
+            "FinishedAt": "0001-01-01T00:00:00Z",
+            "Health": {
+                "Status": "healthy",
+                "FailingStreak": 0,
+                "Log": [
+                    {
+                        "Start": "2024-12-01T11:09:44.807163406Z",
+                        "End": "2024-12-01T11:09:44.895776723Z",
+                        "ExitCode": 1,
+                        "Output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\ncurl: (7) Failed to connect to localhost port 8080 after 0 ms: Could not connect to server\n"
+                    },
+                    {
+                        "Start": "2024-12-01T11:09:49.898035035Z",
+                        "End": "2024-12-01T11:09:50.339095386Z",
+                        "ExitCode": 0,
+                        "Output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100    15    0    15    0     0     43      0 --:--:-- --:--:-- --:--:--    43\n{\"status\":\"UP\"}"
+                    },
+                    {
+                        "Start": "2024-12-01T11:10:20.342707337Z",
+                        "End": "2024-12-01T11:10:20.446542886Z",
+                        "ExitCode": 0,
+                        "Output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100    15    0    15    0     0   1615      0 --:--:-- --:--:-- --:--:--  1666\n{\"status\":\"UP\"}"
+                    },
+                    {
+                        "Start": "2024-12-01T11:10:50.448795586Z",
+                        "End": "2024-12-01T11:10:50.550924352Z",
+                        "ExitCode": 0,
+                        "Output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100    15    0    15    0     0   1893      0 --:--:-- --:--:-- --:--:--  2142\n{\"status\":\"UP\"}"
+                    },
+                    {
+                        "Start": "2024-12-01T11:11:20.552392599Z",
+                        "End": "2024-12-01T11:11:20.661379916Z",
+                        "ExitCode": 0,
+                        "Output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100    15    0    15    0     0   1825      0 --:--:-- --:--:-- --:--:--  1875\n{\"status\":\"UP\"}"
+                    }
+                ]
+            }
+        },
+        "Image": "sha256:33321e4c38ee10b85e5f7ae40a9b9145fa50563389fc156ef58913edb6c68b81",
+        "ResolvConfPath": "/var/lib/docker/containers/d548c983a92b35e6dae8a6cf0a37f50fdc464661546e121b08013a17d0f8eaea/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/d548c983a92b35e6dae8a6cf0a37f50fdc464661546e121b08013a17d0f8eaea/hostname",
+        "HostsPath": "/var/lib/docker/containers/d548c983a92b35e6dae8a6cf0a37f50fdc464661546e121b08013a17d0f8eaea/hosts",
+        "LogPath": "/var/lib/docker/containers/d548c983a92b35e6dae8a6cf0a37f50fdc464661546e121b08013a17d0f8eaea/d548c983a92b35e6dae8a6cf0a37f50fdc464661546e121b08013a17d0f8eaea-json.log",
+        "Name": "/backend-container",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "system_u:object_r:container_file_t:s0:c207,c642",
+        "ProcessLabel": "system_u:system_r:container_t:s0:c207,c642",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "mynetwork",
+            "PortBindings": {
+                "8080/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "8080"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                38,
+                105
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": [],
+            "BlkioDeviceWriteBps": [],
+            "BlkioDeviceReadIOps": [],
+            "BlkioDeviceWriteIOps": [],
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": [],
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/e70fd992762c33bd08eacbde349b99233adc0c5239e7addbdcc059be771beb09-init/diff:/var/lib/docker/overlay2/pz9o4plkctqorb733gld9lty0/diff:/var/lib/docker/overlay2/ju6fwgbcr1v0bszymmfzx2tso/diff:/var/lib/docker/overlay2/5yojz9rjao3ztnt11cojjv7e7/diff:/var/lib/docker/overlay2/832fafd3650d64e8d59df865784625c1f50c92eeaf783014457b6e4a377bdcd6/diff:/var/lib/docker/overlay2/c7adc11e7f5b07c6f409853ad5693d47d48565ead0b7fcf6899b20a22f667070/diff:/var/lib/docker/overlay2/3cc088b82848575ca582cfdacb9bffe7a17fa5787bafddcfe460cbe9179e1967/diff:/var/lib/docker/overlay2/652dc041df766a446050e5632d4b3838348410ab25199e6e52b39db895f9bb78/diff:/var/lib/docker/overlay2/073ee5b8e2f3c1648542aef52740d26a811f2eef3021d4b1176e48f344645410/diff",
+                "MergedDir": "/var/lib/docker/overlay2/e70fd992762c33bd08eacbde349b99233adc0c5239e7addbdcc059be771beb09/merged",
+                "UpperDir": "/var/lib/docker/overlay2/e70fd992762c33bd08eacbde349b99233adc0c5239e7addbdcc059be771beb09/diff",
+                "WorkDir": "/var/lib/docker/overlay2/e70fd992762c33bd08eacbde349b99233adc0c5239e7addbdcc059be771beb09/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [],
+        "Config": {
+            "Hostname": "d548c983a92b",
+            "Domainname": "",
+            "User": "spring:spring",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "8080/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "DB_PASSWORD=postgres123",
+                "DB_HOST=postgres-container",
+                "DB_PORT=5432",
+                "DB_NAME=my_database",
+                "DB_USER=postgres",
+                "PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "JAVA_HOME=/opt/java/openjdk",
+                "LANG=en_US.UTF-8",
+                "LANGUAGE=en_US:en",
+                "LC_ALL=en_US.UTF-8",
+                "JAVA_VERSION=jdk-17.0.13+11",
+                "JAVA_OPTS=-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0",
+                "SPRING_PROFILES_ACTIVE=prod"
+            ],
+            "Cmd": [
+                "sh",
+                "-c",
+                "java $JAVA_OPTS -jar app.jar"
+            ],
+            "Healthcheck": {
+                "Test": [
+                    "CMD-SHELL",
+                    "curl -f http://localhost:8080/actuator/health || exit 1"
+                ],
+                "Interval": 30000000000,
+                "Timeout": 5000000000,
+                "StartPeriod": 30000000000,
+                "Retries": 3
+            },
+            "Image": "mohammedbenhammoute/backend:1.0",
+            "Volumes": null,
+            "WorkingDir": "/app",
+            "Entrypoint": [
+                "/usr/bin/dumb-init",
+                "--"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "description": "Spring Boot Application Runtime",
+                "maintainer": "Mohammed Benhammoute <mohammedbenhammoute@gmail.com>",
+                "version": "1.0"
+            }
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "9a12f162dfa4bf790734308e81f2b723ca5dcc4ca9693c00a7f7bfdfed32087c",
+            "SandboxKey": "/var/run/docker/netns/9a12f162dfa4",
+            "Ports": {
+                "8080/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "8080"
+                    },
+                    {
+                        "HostIp": "::",
+                        "HostPort": "8080"
+                    }
+                ]
+            },
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "mynetwork": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "MacAddress": "02:42:ac:1a:00:03",
+                    "DriverOpts": null,
+                    "NetworkID": "26873d562f02670d35037d152543d890504e2a2f79cab9a3bb837360ed67b65d",
+                    "EndpointID": "693e3decccc596e2dd3fc061842929584f3cc94f534bb7b4ebbc3f011ebcf0cb",
+                    "Gateway": "172.26.0.1",
+                    "IPAddress": "172.26.0.3",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": [
+                        "backend-container",
+                        "d548c983a92b"
+                    ]
+                }
+            }
+        }
+    }
+]
