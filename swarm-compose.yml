@@ -1,115 +1,169 @@
+# Updated swarm-compose.yml
 services:
+  traefik:
+    image: traefik:v2.10
+    command:
+      - "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.swarmMode=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+    ports:
+      - published: 80
+        target: 80
+        mode: host
+      - published: 443
+        target: 443
+        mode: host
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    deploy:
+      mode: global
+      placement:
+        constraints:
+          - node.role==manager
+    networks:
+      - app-network
+
   frontend:
     image: mohammedbenhammoute/frontend:1.0
     ports:
-      - "3000:80"
+      - "3000:80"  # Maps host port 3000 to container port 80
     deploy:
-      replicas: 2
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.frontend.rule=Host(`app.aseds.24-25.com`)"
+        - "traefik.http.services.frontend.loadbalancer.server.port=80"
+        - "traefik.http.routers.frontend.entrypoints=websecure"
+        - "traefik.http.routers.frontend.tls.certresolver=letsencrypt"
+
+      replicas: 2  # Run 2 replicas of the frontend for high availability
       update_config:
-        parallelism: 1
-        delay: 10s
-        order: start-first
+        parallelism: 1  # Update one container at a time
+        delay: 10s  # Wait 10 seconds between updates to ensure stability
+        order: start-first  # Start new container before stopping old one for zero downtime
       restart_policy:
-        condition: on-failure
-        max_attempts: 3
+        condition: on-failure  # Restart container if it fails
+        max_attempts: 3  # Maximum 3 restart attempts
       resources:
         limits:
-          cpus: '0.5'
-          memory: 512M
+          cpus: '0.5'  # Limit to 50% of one CPU core
+          memory: 512M  # Limit memory usage to 512MB
       placement:
         constraints:
-          - node.role==worker
+          - node.role==worker  # Only run frontend containers on worker nodes
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:80"]
-      interval: 30s
-      timeout: 5s
-      retries: 3
-      start_period: 30s
+      test: ["CMD", "curl", "-f", "http://localhost:80"]  # Health check command to ensure service is running
+      interval: 30s  # Check health every 30 seconds
+      timeout: 5s  # Timeout for each health check is 5 seconds
+      retries: 3  # Retry health check 3 times before marking as unhealthy
+      start_period: 30s  # Wait 30 seconds before starting health checks
     networks:
-      - app-network
+      app-network:  # Connect to the overlay network for service communication
+        aliases:
+          - frontend-service  # DNS alias for service discovery
     logging:
-      driver: "json-file"
+      driver: "json-file"  # Use json-file logging driver
       options:
-        max-size: "10m"
-        max-file: "3"
+        max-size: "10m"  # Maximum log file size is 10MB
+        max-file: "3"  # Keep a maximum of 3 log files
 
   backend:
     image: mohammedbenhammoute/backend:1.0
+    ports:
+      - "8080:8080"  # Maps host port 8080 to container port 8080
     deploy:
-      replicas: 3
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.backend.rule=Host(`api.aseds.24-25.com`)"
+        - "traefik.http.services.backend.loadbalancer.server.port=8080"
+        - "traefik.http.routers.backend.entrypoints=websecure"
+        - "traefik.http.routers.backend.tls.certresolver=letsencrypt"
+      replicas: 2  # Run 2 replicas of the backend for high availability
       update_config:
-        parallelism: 1
-        delay: 10s
-        order: start-first
+        parallelism: 1  # Update one container at a time
+        delay: 10s  # Wait 10 seconds between updates to ensure stability
+        order: start-first  # Start new container before stopping old one for zero downtime
       restart_policy:
-        condition: on-failure
-        max_attempts: 3
+        condition: on-failure  # Restart container if it fails
+        max_attempts: 3  # Maximum 3 restart attempts
       resources:
         limits:
-          cpus: '1.0'
-          memory: 1G
+          cpus: '1.0'  # Limit to 1 CPU core
+          memory: 1G  # Limit memory usage to 1GB
       placement:
         constraints:
-          - node.role==worker
+          - node.role==worker  # Only run backend containers on worker nodes
     environment:
-      - DB_HOST=postgres-container
-      - DB_PORT=5432
-      - DB_NAME=my_database
-      - DB_USER=postgres
-      - DB_PASSWORD=postgres123
-      - SPRING_PROFILES_ACTIVE=prod
+      - DB_HOST=postgres-container  # Database host environment variable
+      - DB_PORT=5432  # Database port environment variable
+      - DB_NAME=my_database  # Database name environment variable
+      - DB_USER=postgres  # Database user environment variable
+      - DB_PASSWORD=postgres123  # Database password environment variable
+      - SPRING_PROFILES_ACTIVE=prod  # Spring profile environment variable
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
-      interval: 30s
-      timeout: 5s
-      retries: 3
-      start_period: 30s
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]  # Health check command to ensure service is running
+      interval: 30s  # Check health every 30 seconds
+      timeout: 5s  # Timeout for each health check is 5 seconds
+      retries: 3  # Retry health check 3 times before marking as unhealthy
+      start_period: 30s  # Wait 30 seconds before starting health checks
     networks:
-      - app-network
+      app-network:  # Connect to the overlay network for service communication
+        aliases:
+          - backend-service  # DNS alias for service discovery
     logging:
-      driver: "json-file"
+      driver: "json-file"  # Use json-file logging driver
       options:
-        max-size: "10m"
-        max-file: "3"
+        max-size: "10m"  # Maximum log file size is 10MB
+        max-file: "3"  # Keep a maximum of 3 log files
 
   postgres:
     image: postgres:17-alpine
     deploy:
-      replicas: 1
+      replicas: 2  # Run 2 replica of the database
       placement:
         constraints:
-          - node.role==manager
+          - node.role==manager  # Only run database container on manager nodes
       restart_policy:
-        condition: on-failure
+        condition: on-failure  # Restart container if it fails
       resources:
         limits:
-          cpus: '1.0'
-          memory: 2G
+          cpus: '1.0'  # Limit to 1 CPU core
+          memory: 2G  # Limit memory usage to 2GB
     environment:
-      - POSTGRES_DB=my_database
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres123
+      - POSTGRES_DB=my_database  # Database name environment variable
+      - POSTGRES_USER=postgres  # Database user environment variable
+      - POSTGRES_PASSWORD=postgres123  # Database password environment variable
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data  # Persist database data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+      test: ["CMD-SHELL", "pg_isready -U postgres"]  # Health check command to ensure database is running
+      interval: 10s  # Check health every 10 seconds
+      timeout: 5s  # Timeout for each health check is 5 seconds
+      retries: 5  # Retry health check 5 times before marking as unhealthy
     networks:
-      - app-network
+      app-network:  # Connect to the overlay network for service communication
+        aliases:
+          - db-service  # DNS alias for service discovery
     logging:
-      driver: "json-file"
+      driver: "json-file"  # Use json-file logging driver
       options:
-        max-size: "10m"
-        max-file: "3"
+        max-size: "10m"  # Maximum log file size is 10MB
+        max-file: "3"  # Keep a maximum of 3 log files
 
 volumes:
   postgres_data:
-    name: postgres_data
-    driver: local
+    name: postgres_data 
+  traefik-certificates:
+    name: traefik-certificates # Named volume for database persistence
 
 networks:
   app-network:
-    driver: overlay
-    attachable: true
+    driver: overlay  # Use overlay network for multi-host communication
+    attachable: true  # Allow external services to connect to this network
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/16  # Define network address space
