@@ -1,0 +1,6 @@
+myapp_postgres.1.af3heywlkc5k@localhost    | 
+myapp_postgres.1.af3heywlkc5k@localhost    | PostgreSQL Database directory appears to contain a database; Skipping initialization
+myapp_postgres.1.af3heywlkc5k@localhost    | 
+myapp_postgres.2.0m75iw55wopy@localhost    | 
+myapp_postgres.2.0m75iw55wopy@localhost    | PostgreSQL Database directory appears to contain a database; Skipping initialization
+myapp_postgres.2.0m75iw55wopy@localhost    | 

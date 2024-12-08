@@ -1,0 +1,74 @@
+myapp_backend.2.46junbc1xxdr@localhost    | 
+myapp_backend.1.rgtohkmgvgum@localhost    | 
+myapp_backend.1.rgtohkmgvgum@localhost    |   .   ____          _            __ _ _
+myapp_backend.2.46junbc1xxdr@localhost    |   .   ____          _            __ _ _
+myapp_backend.1.rgtohkmgvgum@localhost    |  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+myapp_backend.2.46junbc1xxdr@localhost    |  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+myapp_backend.1.rgtohkmgvgum@localhost    | ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+myapp_backend.1.rgtohkmgvgum@localhost    |  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+myapp_backend.2.46junbc1xxdr@localhost    | ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+myapp_backend.1.rgtohkmgvgum@localhost    |   '  |____| .__|_| |_|_| |_\__, | / / / /
+myapp_backend.2.46junbc1xxdr@localhost    |  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+myapp_backend.1.rgtohkmgvgum@localhost    |  =========|_|==============|___/=/_/_/_/
+myapp_backend.2.46junbc1xxdr@localhost    |   '  |____| .__|_| |_|_| |_\__, | / / / /
+myapp_backend.1.rgtohkmgvgum@localhost    | 
+myapp_backend.2.46junbc1xxdr@localhost    |  =========|_|==============|___/=/_/_/_/
+myapp_backend.1.rgtohkmgvgum@localhost    |  :: Spring Boot ::                (v3.3.5)
+myapp_backend.2.46junbc1xxdr@localhost    | 
+myapp_backend.1.rgtohkmgvgum@localhost    | 
+myapp_backend.1.rgtohkmgvgum@localhost    | 2024-12-08T18:32:48.147Z  INFO 7 --- [backend] [           main] org.chatapp.backend.BackendApplication   : Starting BackendApplication v0.0.1-SNAPSHOT using Java 17.0.13 with PID 7 (/app/app.jar started by spring in /app)
+myapp_backend.1.rgtohkmgvgum@localhost    | 2024-12-08T18:32:48.153Z  INFO 7 --- [backend] [           main] org.chatapp.backend.BackendApplication   : The following 1 profile is active: "prod"
+myapp_backend.1.rgtohkmgvgum@localhost    | 2024-12-08T18:32:53.447Z  INFO 7 --- [backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+myapp_backend.2.46junbc1xxdr@localhost    |  :: Spring Boot ::                (v3.3.5)
+myapp_backend.1.rgtohkmgvgum@localhost    | 2024-12-08T18:32:53.739Z  INFO 7 --- [backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 277 ms. Found 3 JPA repository interfaces.
+myapp_backend.1.rgtohkmgvgum@localhost    | 2024-12-08T18:32:57.237Z  INFO 7 --- [backend] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+myapp_backend.2.46junbc1xxdr@localhost    | 
+myapp_backend.1.rgtohkmgvgum@localhost    | 2024-12-08T18:32:57.257Z  INFO 7 --- [backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+myapp_backend.2.46junbc1xxdr@localhost    | 2024-12-08T18:32:48.049Z  INFO 7 --- [backend] [           main] org.chatapp.backend.BackendApplication   : Starting BackendApplication v0.0.1-SNAPSHOT using Java 17.0.13 with PID 7 (/app/app.jar started by spring in /app)
+myapp_backend.1.rgtohkmgvgum@localhost    | 2024-12-08T18:32:57.258Z  INFO 7 --- [backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+myapp_backend.1.rgtohkmgvgum@localhost    | 2024-12-08T18:32:57.658Z  INFO 7 --- [backend] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+myapp_backend.2.46junbc1xxdr@localhost    | 2024-12-08T18:32:48.053Z  INFO 7 --- [backend] [           main] org.chatapp.backend.BackendApplication   : The following 1 profile is active: "prod"
+myapp_backend.1.rgtohkmgvgum@localhost    | 2024-12-08T18:32:57.660Z  INFO 7 --- [backend] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 9223 ms
+myapp_backend.2.46junbc1xxdr@localhost    | 2024-12-08T18:32:52.969Z  INFO 7 --- [backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+myapp_backend.1.rgtohkmgvgum@localhost    | 2024-12-08T18:32:59.741Z  INFO 7 --- [backend] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+myapp_backend.2.46junbc1xxdr@localhost    | 2024-12-08T18:32:53.253Z  INFO 7 --- [backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 209 ms. Found 3 JPA repository interfaces.
+myapp_backend.1.rgtohkmgvgum@localhost    | 2024-12-08T18:32:59.945Z  INFO 7 --- [backend] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+myapp_backend.2.46junbc1xxdr@localhost    | 2024-12-08T18:32:56.671Z  INFO 7 --- [backend] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+myapp_backend.1.rgtohkmgvgum@localhost    | 2024-12-08T18:33:00.125Z  INFO 7 --- [backend] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+myapp_backend.2.46junbc1xxdr@localhost    | 2024-12-08T18:32:56.755Z  INFO 7 --- [backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+myapp_backend.1.rgtohkmgvgum@localhost    | 2024-12-08T18:33:01.238Z  INFO 7 --- [backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+myapp_backend.2.46junbc1xxdr@localhost    | 2024-12-08T18:32:56.755Z  INFO 7 --- [backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+myapp_backend.1.rgtohkmgvgum@localhost    | 2024-12-08T18:33:01.351Z  INFO 7 --- [backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+myapp_backend.2.46junbc1xxdr@localhost    | 2024-12-08T18:32:57.245Z  INFO 7 --- [backend] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+myapp_backend.1.rgtohkmgvgum@localhost    | 2024-12-08T18:33:02.167Z  INFO 7 --- [backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6f0ae0ee
+myapp_backend.2.46junbc1xxdr@localhost    | 2024-12-08T18:32:57.247Z  INFO 7 --- [backend] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 8985 ms
+myapp_backend.1.rgtohkmgvgum@localhost    | 2024-12-08T18:33:02.222Z  INFO 7 --- [backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+myapp_backend.2.46junbc1xxdr@localhost    | 2024-12-08T18:32:59.428Z  INFO 7 --- [backend] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+myapp_backend.1.rgtohkmgvgum@localhost    | 2024-12-08T18:33:02.268Z  WARN 7 --- [backend] [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+myapp_backend.2.46junbc1xxdr@localhost    | 2024-12-08T18:32:59.643Z  INFO 7 --- [backend] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+myapp_backend.1.rgtohkmgvgum@localhost    | 2024-12-08T18:33:06.939Z  INFO 7 --- [backend] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+myapp_backend.2.46junbc1xxdr@localhost    | 2024-12-08T18:32:59.775Z  INFO 7 --- [backend] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+myapp_backend.1.rgtohkmgvgum@localhost    | 2024-12-08T18:33:07.166Z  INFO 7 --- [backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+myapp_backend.2.46junbc1xxdr@localhost    | 2024-12-08T18:33:00.835Z  INFO 7 --- [backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+myapp_backend.2.46junbc1xxdr@localhost    | 2024-12-08T18:33:00.932Z  INFO 7 --- [backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+myapp_backend.1.rgtohkmgvgum@localhost    | 2024-12-08T18:33:08.359Z  INFO 7 --- [backend] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+myapp_backend.2.46junbc1xxdr@localhost    | 2024-12-08T18:33:01.673Z  INFO 7 --- [backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2651e783
+myapp_backend.2.46junbc1xxdr@localhost    | 2024-12-08T18:33:01.730Z  INFO 7 --- [backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+myapp_backend.1.rgtohkmgvgum@localhost    | 2024-12-08T18:33:11.036Z  WARN 7 --- [backend] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+myapp_backend.2.46junbc1xxdr@localhost    | 2024-12-08T18:33:01.841Z  WARN 7 --- [backend] [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+myapp_backend.1.rgtohkmgvgum@localhost    | 2024-12-08T18:33:15.556Z  INFO 7 --- [backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+myapp_backend.2.46junbc1xxdr@localhost    | 2024-12-08T18:33:06.642Z  INFO 7 --- [backend] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+myapp_backend.2.46junbc1xxdr@localhost    | 2024-12-08T18:33:06.846Z  INFO 7 --- [backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+myapp_backend.1.rgtohkmgvgum@localhost    | 2024-12-08T18:33:15.862Z  INFO 7 --- [backend] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+myapp_backend.2.46junbc1xxdr@localhost    | 2024-12-08T18:33:08.150Z  INFO 7 --- [backend] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+myapp_backend.1.rgtohkmgvgum@localhost    | 2024-12-08T18:33:15.955Z  INFO 7 --- [backend] [           main] org.chatapp.backend.BackendApplication   : Started BackendApplication in 29.987 seconds (process running for 32.568)
+myapp_backend.2.46junbc1xxdr@localhost    | 2024-12-08T18:33:11.036Z  WARN 7 --- [backend] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+myapp_backend.1.rgtohkmgvgum@localhost    | 2024-12-08T18:33:44.759Z  INFO 7 --- [backend] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+myapp_backend.2.46junbc1xxdr@localhost    | 2024-12-08T18:33:15.741Z  INFO 7 --- [backend] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+myapp_backend.2.46junbc1xxdr@localhost    | 2024-12-08T18:33:16.051Z  INFO 7 --- [backend] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+myapp_backend.1.rgtohkmgvgum@localhost    | 2024-12-08T18:33:44.760Z  INFO 7 --- [backend] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+myapp_backend.2.46junbc1xxdr@localhost    | 2024-12-08T18:33:16.133Z  INFO 7 --- [backend] [           main] org.chatapp.backend.BackendApplication   : Started BackendApplication in 30.17 seconds (process running for 32.731)
+myapp_backend.2.46junbc1xxdr@localhost    | 2024-12-08T18:33:44.867Z  INFO 7 --- [backend] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+myapp_backend.1.rgtohkmgvgum@localhost    | 2024-12-08T18:33:44.762Z  INFO 7 --- [backend] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+myapp_backend.2.46junbc1xxdr@localhost    | 2024-12-08T18:33:44.868Z  INFO 7 --- [backend] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+myapp_backend.2.46junbc1xxdr@localhost    | 2024-12-08T18:33:44.870Z  INFO 7 --- [backend] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
