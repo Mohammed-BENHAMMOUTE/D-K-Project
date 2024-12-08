@@ -16,9 +16,14 @@ services:
         limits:
           cpus: '0.5'
           memory: 512M
-      placement:
-        constraints:
-          - node.role==worker
+
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.frontend.rule=Host(`aseds.inpt.com`)"
+        - "traefik.http.services.frontend.loadbalancer.server.port=80"
+        - "traefik.http.routers.frontend.entrypoints=web"
+        - "traefik.docker.network=traefik"
+
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:80"]
       interval: 30s
@@ -26,7 +31,7 @@ services:
       retries: 3
       start_period: 30s
     networks:
-      - app-network
+      - traefik
     logging:
       driver: "json-file"
       options:
@@ -48,11 +53,16 @@ services:
         limits:
           cpus: '1.0'
           memory: 1G
-      placement:
-        constraints:
-          - node.role==worker
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.backend.rule=Host(`api.aseds.inpt.com`)"
+        - "traefik.http.routers.backend.entrypoints=websecure"
+        - "traefik.http.routers.backend.tls=true"
+        - "traefik.http.routers.backend.tls.certresolver=myresolver"
+        - "traefik.http.services.backend.loadbalancer.server.port=8080"  # Add this line
+        - "traefik.docker.network=traefik"  # Add this line
     environment:
-      - DB_HOST=postgres-container
+      - DB_HOST=app_postgres 
       - DB_PORT=5432
       - DB_NAME=my_database
       - DB_USER=postgres
@@ -65,7 +75,7 @@ services:
       retries: 3
       start_period: 30s
     networks:
-      - app-network
+      - traefik
     logging:
       driver: "json-file"
       options:
@@ -76,9 +86,6 @@ services:
     image: postgres:17-alpine
     deploy:
       replicas: 1
-      placement:
-        constraints:
-          - node.role==manager
       restart_policy:
         condition: on-failure
       resources:
@@ -97,7 +104,7 @@ services:
       timeout: 5s
       retries: 5
     networks:
-      - app-network
+      - traefik
     logging:
       driver: "json-file"
       options:
@@ -110,6 +117,5 @@ volumes:
     driver: local
 
 networks:
-  app-network:
-    driver: overlay
-    attachable: true
+  traefik:
+    external: true
