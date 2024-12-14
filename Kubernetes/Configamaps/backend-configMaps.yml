@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  namespace: exam
+  labels:
+    app: backend
+    component: config
+data:
+  DB_HOST: postgres-service
+  DB_PORT: "5432"
+  DB_NAME: my_database
+  SPRING_PROFILES_ACTIVE: prod

@@ -9,8 +9,8 @@ import org.chatapp.backend.model.Grade;
 import org.chatapp.backend.model.Student;
 
 public interface StudentService {
-    Student createStudent(StudentDto studentDto);
-    List<Student> getAllStudents();
+    StudentDto createStudent(StudentDto studentDto);
+    List<StudentDto> getAllStudents();
     Student getStudentWithGrades(Long id);
     Grade addGrade(Long studentId, GradeDto gradeDto);
 }

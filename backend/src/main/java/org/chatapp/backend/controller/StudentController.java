@@ -1,10 +1,10 @@
 package org.chatapp.backend.controller;
-
 import jakarta.validation.Valid;
 import org.chatapp.backend.dto.ApiResponse;
 import org.chatapp.backend.dto.StudentDto;
 import org.chatapp.backend.dto.GradeDto;
 import org.chatapp.backend.service.StudentService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -23,13 +23,18 @@ public class StudentController {
 
     @PostMapping("/students")
     public ResponseEntity<ApiResponse<?>> createStudent(@Valid @RequestBody StudentDto studentDto) {
-        var savedStudent = studentService.createStudent(studentDto);
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(savedStudent.getId())
-                .toUri();
-        return ResponseEntity.created(location)
-                .body(ApiResponse.success(savedStudent));
+        try {
+            var savedStudentDto = studentService.createStudent(studentDto);
+            URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                    .path("/{id}")
+                    .buildAndExpand(savedStudentDto.getId())
+                    .toUri();
+            return ResponseEntity.created(location)
+                    .body(ApiResponse.success(savedStudentDto));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(ApiResponse.error("Error creating student: " + e.getMessage()));
+        }
     }
 
     @GetMapping("/students")

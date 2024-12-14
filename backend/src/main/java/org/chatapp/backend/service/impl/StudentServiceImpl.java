@@ -13,11 +13,19 @@ import org.springframework.transaction.annotation.Transactional;
 
 import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentServiceImpl implements StudentService {
     private final StudentRepository studentRepository;
     private final GradeRepository gradeRepository;
+    private StudentDto convertToDto(Student student) {
+        StudentDto dto = new StudentDto();
+        dto.setId(student.getId());
+        dto.setName(student.getName());
+        dto.setCreationDate(student.getCreationDate()); // Include creationDate
+        return dto;
+    }
 
     public StudentServiceImpl(StudentRepository studentRepository, GradeRepository gradeRepository) {
         this.studentRepository = studentRepository;
@@ -26,16 +34,25 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     @Transactional
-    public Student createStudent(StudentDto studentDto) {
-        Student student = new Student();
-        student.setName(studentDto.getName());
-        return studentRepository.save(student);
+    public StudentDto createStudent(StudentDto studentDto) {
+        try {
+            Student student = new Student();
+            student.setName(studentDto.getName());
+            // creationDate will be set by @PrePersist
+            Student savedStudent = studentRepository.save(student);
+            return convertToDto(savedStudent);
+        } catch (Exception e) {
+            throw new RuntimeException("Error creating student: " + e.getMessage());
+        }
     }
 
     @Override
     @Transactional(readOnly = true)
-    public List<Student> getAllStudents() {
-        return studentRepository.findAll();
+    public List<StudentDto> getAllStudents() {
+        List<Student> students = studentRepository.findAll();
+        return students.stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList()); // Convert to List<StudentDto>
     }
 
     @Override

@@ -23,7 +23,7 @@ USER appuser
 
 # Best Practice: Copy package files and install dependencies
 # Copying only package files first allows Docker to cache the npm ci step if dependencies haven't changed.
-COPY --chown=appuser:appgroup package.json package-lock.json ./
+COPY --chown=appuser:appgroup package*.json ./
 RUN npm ci
 
 # Best Practice: Copy source code after dependencies to maximize caching efficiency

@@ -1,10 +1,9 @@
-
 import { ColumnDef } from "@tanstack/react-table"
 
-export type Student = {
-  id: string
-  name: string
-  created: string
+export interface Student {
+  id: string;
+  name: string;
+  creationDate: string; 
 }
 
 export const columns: ColumnDef<Student>[] = [
@@ -13,7 +12,8 @@ export const columns: ColumnDef<Student>[] = [
     header: "Name",
   },
   {
-    accessorKey: "created",
+    accessorKey: "creationDate", // Update this to match the field name
     header: "Created At",
+    cell: info => new Date(info.getValue() as string).toLocaleString(), 
   }
 ]

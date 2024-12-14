@@ -1,6 +1,6 @@
 services:
   postgres:
-    container_name: postgres-container    
+    container_name: postgres-container
     image: postgres:15-alpine
     networks:
       - nockNock                        
@@ -14,7 +14,7 @@ services:
       - postgres_data:/var/lib/postgresql/data    
 
 networks:
-  nockNock:                             
+  appnetwork:                             
 
 volumes:
   postgres_data:                        

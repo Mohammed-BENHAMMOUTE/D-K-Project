@@ -1,56 +1,34 @@
 services:
   frontend:
     image: mohammedbenhammoute/frontend:1.0
-    # Remove direct port mapping since Traefik handles routing
     deploy:
       replicas: 2
       placement:
         constraints:
-          - node.role == manager  # Run on manager node
-      update_config:
-        parallelism: 1
-        delay: 10s
-      restart_policy:
-        condition: any
-        delay: 5s
-        max_attempts: 3
+          - node.role == manager
       labels:
         - "traefik.enable=true"
         - "traefik.http.routers.frontend.rule=Host(`aseds.inpt.com`)"
         - "traefik.http.services.frontend.loadbalancer.server.port=80"
         - "traefik.http.routers.frontend.entrypoints=web"
-        - "traefik.http.services.frontend.loadbalancer.sticky=true"
     networks:
       - traefik
 
   backend:
     image: mohammedbenhammoute/backend:1.0
     deploy:
-      replicas: 2
-      update_config:
-        parallelism: 1
-        delay: 10s
-        order: start-first
-      restart_policy:
-        condition: any
-        delay: 5s
-        max_attempts: 3
-      resources:
-        limits:
-          cpus: '1.0'
-          memory: 1G
+      replicas: 3
       labels:
         - "traefik.enable=true"
         - "traefik.docker.network=traefik"
         - "traefik.http.routers.backend.rule=Host(`api.aseds.inpt.com`)"
         - "traefik.http.services.backend.loadbalancer.server.port=8080"
     environment:
-      - DB_HOST=myapp_postgres # Fixed service name
+      - DB_HOST=pgpool
       - DB_PORT=5432
       - DB_NAME=my_database
       - DB_USER=postgres
       - DB_PASSWORD=postgres123
-      - SPRING_PROFILES_ACTIVE=prod
     networks:
       - traefik
     healthcheck:
@@ -58,37 +36,66 @@ services:
       interval: 30s
       timeout: 5s
       retries: 3
-      start_period: 30s
 
-  postgres:
+  postgres-primary:
     image: postgres:17-alpine
     deploy:
-      replicas: 2
-      restart_policy:
-        condition: any
-        delay: 5s
-        max_attempts: 3
-      resources:
-        limits:
-          cpus: '1.0'
-          memory: 2G
+      replicas: 1
     environment:
       - POSTGRES_DB=my_database
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres123
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_primary_data:/var/lib/postgresql/data
     networks:
       - traefik
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
       timeout: 5s
-      retries: 5
+
+  postgres-replica:
+    image: postgres:17-alpine
+    deploy:
+      replicas: 1
+    environment:
+      - POSTGRES_DB=my_database
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres123
+    volumes:
+      - postgres_replica_data:/var/lib/postgresql/data
+    networks:
+      - traefik
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+
+  pgpool:
+    image: bitnami/pgpool:latest
+    deploy:
+      replicas: 1
+    environment:
+      - PGPOOL_BACKEND_NODES=0:postgres-primary:5432,1:postgres-replica:5432
+      - PGPOOL_SR_CHECK_USER=postgres
+      - PGPOOL_SR_CHECK_PASSWORD=postgres123
+      - PGPOOL_POSTGRES_USERNAME=postgres
+      - PGPOOL_POSTGRES_PASSWORD=postgres123
+      - PGPOOL_ADMIN_USERNAME=admin
+      - PGPOOL_ADMIN_PASSWORD=admin123
+      - PGPOOL_ENABLE_LOAD_BALANCING=yes
+      - PGPOOL_MAX_POOL=20
+    networks:
+      - traefik
+    healthcheck:
+      test: ["CMD", "pg_isready", "-h", "localhost", "-p", "5432", "-U", "postgres"]
+      interval: 10s
+      timeout: 5s
 
 volumes:
-  postgres_data:
-    name: postgres_data
+  postgres_primary_data:
+    driver: local
+  postgres_replica_data:
     driver: local
 
 networks:

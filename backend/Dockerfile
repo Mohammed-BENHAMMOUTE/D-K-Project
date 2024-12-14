@@ -64,6 +64,8 @@ USER spring:spring
 EXPOSE 8080
 
 #setting environment variables for database connection, i used these in application.yml as arguments
+## TODO: REWRITE THIS TO USE .env FILE:
+
 ENV DB_HOST=postgres-container \
     DB_PORT=5432 \
     DB_NAME=my_database \

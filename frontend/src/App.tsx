@@ -3,36 +3,42 @@ import { DataTable } from './components/myComponents/DataTable'
 import { columns } from './components/myComponents/columns'
 import { AddStudentModal } from './components/myComponents/AddStudentModal'
 import type { Student } from './components/myComponents/columns'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 import { GradesModal } from './components/myComponents/GradesModal'
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedStudent, setSelectedStudent] = useState<{id: string, name: string} | null>(null)
+
   
-  const [data, setData] = useState<Student[]>([
-    { id: "1", name: "Student 1", created: "2024-01-01" },
-    { id: "2", name: "Student 2", created: "2024-01-02" },
-    { id: "3", name: "Student 3", created: "2024-01-03" },
-    { id: "4", name: "Student 4", created: "2024-01-04" },
-    { id: "5", name: "Student 5", created: "2024-01-05" },
-    { id: "6", name: "Student 6", created: "2024-01-06" },
-    { id: "7", name: "Student 7", created: "2024-01-07" },
-    { id: "8", name: "Student 8", created: "2024-01-08" },
-    { id: "9", name: "Student 9", created: "2024-01-09" },
-    { id: "10", name: "Student 10", created: "2024-01-10" },
-  ])
+  const [data, setData] = useState<Student[]>([]);
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+useEffect(() => {
+  axios.get(`${API_URL}/api/v1/students`)
+    .then(response => {
+      setData(response.data.data);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+}, []);
 
-  const handleAddStudent = (name: string) => {
-    const newStudent: Student = {
-      id: (data.length + 1).toString(),
-      name,
-      created: new Date().toISOString().split('T')[0]
+const handleAddStudent = async (name: string) => {
+  try {
+    const response = await axios.post(`${API_URL}/api/v1/students`, { name });
+    if (response.data && response.data.data) {
+      const getResponse = await axios.get(`${API_URL}/api/v1/students`);
+      setData(getResponse.data.data);
+      setIsModalOpen(false);
     }
-    setData([...data, newStudent])
+  } catch (error: any) {
+    console.error('Error adding student:', error.response?.data || error.message);
+    alert('Failed to add student. Please try again.');
   }
+};
 
-  const handleRowClick = (student: Student) => {
+const handleRowClick = (student: Student) => {
     setSelectedStudent({ id: student.id, name: student.name })
   }
 
@@ -42,30 +48,27 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             <div className="flex-shrink-0">
-              <h2 className="text-xl font-bold text-blue-600">SMS</h2>
+              <h2 className="text-2xl font-bold text-blue-600">SMS</h2>
             </div>
-            <div className="hidden md:block">
-              <div className="ml-4 flex items-center space-x-4">
-                <a href="#" className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
-                <a href="#" className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Students</a>
-                <a href="#" className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Reports</a>
-              </div>
+            <div className="hidden md:flex space-x-6">
+              <a href="#" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-lg font-medium">Students</a>
+              <a href="#" className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-lg font-medium">Reports</a>
             </div>
           </div>
         </div>
       </nav>
 
-      <header className="bg-white border-b">
-        <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+      <header className="bg-white shadow">
+        <div className="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
           <div className="md:flex md:items-center md:justify-between">
-            <div className="flex-1 min-w-0">
-              <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Student Management System</h1>
-              <p className="mt-2 text-sm text-gray-500">Manage and track student records efficiently</p>
+            <div className="flex-1">
+              <h1 className="text-4xl font-extrabold text-gray-900">Student Management System</h1>
+              <p className="mt-4 text-lg text-gray-600">Manage and track student records efficiently</p>
             </div>
-            <div className="mt-4 md:mt-0 md:ml-4">
+            <div className="mt-6 md:mt-0">
               <button 
                 onClick={() => setIsModalOpen(true)}
-                className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700"
+                className="inline-flex items-center px-6 py-3 border border-transparent rounded-md shadow-lg text-base font-semibold text-white bg-blue-600 hover:bg-blue-700 transition duration-300"
               >
                 Add New Student
               </button>
@@ -74,14 +77,13 @@ function App() {
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-lg shadow-sm border">
-          <div className="px-4 py-5 sm:p-6">
+      <main className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div className="bg-white rounded-lg shadow-md overflow-hidden">
+          <div className="px-6 py-8">
             <DataTable 
               columns={columns} 
-              data={data} 
-              onRowClick={handleRowClick}
-            />
+              data={data}
+              onRowClick={handleRowClick}  />
           </div>
         </div>
       </main>
