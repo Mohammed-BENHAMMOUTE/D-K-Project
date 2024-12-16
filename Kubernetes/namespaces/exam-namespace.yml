@@ -5,3 +5,6 @@ metadata:
   labels:
     name: exam
     environment: dev
+spec:
+  finalizers:
+    - kubernetes.io/metadata.deletion

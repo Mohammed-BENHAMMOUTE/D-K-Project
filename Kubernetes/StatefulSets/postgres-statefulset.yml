@@ -40,21 +40,31 @@ spec:
         livenessProbe:
           exec:
             command:
-            - pg_isready
-            - -U
-            - postgres
-          initialDelaySeconds: 30
+            - /bin/sh
+            - -c
+            - exec pg_isready -U postgres -h localhost
+          initialDelaySeconds: 60
           periodSeconds: 10
           timeoutSeconds: 5
+          failureThreshold: 3
         readinessProbe:
           exec:
             command:
-            - pg_isready
-            - -U
-            - postgres
+            - /bin/sh
+            - -c
+            - exec pg_isready -U postgres -h localhost
           initialDelaySeconds: 5
-          periodSeconds: 5
-          timeoutSeconds: 1
+          periodSeconds: 10
+          failureThreshold: 3
+        startupProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -c
+            - exec pg_isready -U postgres -h localhost
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          failureThreshold: 30
         volumeMounts:
         - name: postgres-storage
           mountPath: /var/lib/postgresql/data

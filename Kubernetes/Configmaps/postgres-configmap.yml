@@ -1,10 +1,11 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: frontend-config
+  name: postgres-config
   namespace: exam
   labels:
-    app: frontend
+    app: postgres
     component: config
 data:
-  VITE_API_URL: "http://backend-service:8080"
+  POSTGRES_DB: my_database
+  POSTGRES_USER: postgres

@@ -36,7 +36,7 @@ RUN npm run build
 # Stage 2: Runtime
 # Use Nginx with SHA256 pinning
 # Using a specific version with SHA256 pinning ensures image consistency and security
-FROM nginx:stable-alpine@sha256:d6f8c6b38edf2b7c6619718ad7a00caa4ed4741d12ce12550333a28d2b52dc89
+FROM nginx:1.26-alpine-slim
 
 # Metadata Labels
 LABEL maintainer="Mohammed Benhammoute" \

@@ -28,5 +28,5 @@ public class User {
 
     @Column(length = 60, nullable = false)
     private String email;
-    //learning rebase
+    
 }
