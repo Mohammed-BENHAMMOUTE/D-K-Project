@@ -7,4 +7,4 @@ metadata:
     app: frontend
     component: config
 data:
-  VITE_API_URL: "http://aseds.inpt.com/api"
+  VITE_API_URL: "http://aseds.inpt.com/api/v1"

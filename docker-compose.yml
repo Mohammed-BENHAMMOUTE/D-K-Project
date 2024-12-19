@@ -43,7 +43,7 @@ services:
       - app-network
 
   postgres:
-    image: postgres:17-alpine
+    image: bitnami/postgresql:17.2.0-debian-12-r3
     container_name: postgres-container
     environment:
       - POSTGRES_DB=my_database
