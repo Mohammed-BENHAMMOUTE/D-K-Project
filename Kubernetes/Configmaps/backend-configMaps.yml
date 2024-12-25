@@ -7,7 +7,13 @@ metadata:
     app: backend
     component: config
 data:
-  DB_HOST: postgres-service
+  DB_HOST: "postgres-service"
   DB_PORT: "5432"
-  DB_NAME: my_database
-  SPRING_PROFILES_ACTIVE: prod
+  DB_NAME: "my_database"
+  DB_USER: "postgres"
+  SPRING_PROFILES_ACTIVE: "prod"
+  SPRING_DATASOURCE_URL: "jdbc:postgresql://postgres-service:5432/my_database"
+  SPRING_DATASOURCE_USERNAME: "postgres"
+  SPRING_DATASOURCE_DRIVER_CLASS_NAME: "org.postgresql.Driver"
+  SPRING_JPA_HIBERNATE_DDL_AUTO: "update"
+  SPRING_JPA_DATABASE_PLATFORM: "org.hibernate.dialect.PostgreSQLDialect"

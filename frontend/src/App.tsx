@@ -10,12 +10,11 @@ import { GradesModal } from './components/myComponents/GradesModal'
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedStudent, setSelectedStudent] = useState<{id: string, name: string} | null>(null)
-
+  const API_URL = import.meta.env.VITE_API_URL?.replace(/\/$/, '') || 'http://localhost:8080';
   
   const [data, setData] = useState<Student[]>([]);
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
 useEffect(() => {
-  axios.get(`${API_URL}/api/v1/students`)
+  axios.get(`${API_URL}/students`)
     .then(response => {
       setData(response.data.data);
     })
@@ -24,11 +23,13 @@ useEffect(() => {
     });
 }, []);
 
+
 const handleAddStudent = async (name: string) => {
   try {
-    const response = await axios.post(`${API_URL}/api/v1/students`, { name });
+    // Remove the duplicated api/v1 path
+    const response = await axios.post(`${API_URL}/students`, { name });
     if (response.data && response.data.data) {
-      const getResponse = await axios.get(`${API_URL}/api/v1/students`);
+      const getResponse = await axios.get(`${API_URL}/students`);
       setData(getResponse.data.data);
       setIsModalOpen(false);
     }

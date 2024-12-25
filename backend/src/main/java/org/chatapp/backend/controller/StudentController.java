@@ -13,7 +13,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping("/api/v1")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class StudentController {
     private final StudentService studentService;
 
