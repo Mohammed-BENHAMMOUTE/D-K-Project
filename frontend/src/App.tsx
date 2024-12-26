@@ -10,7 +10,7 @@ import { GradesModal } from './components/myComponents/GradesModal'
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedStudent, setSelectedStudent] = useState<{id: string, name: string} | null>(null)
-  const API_URL = import.meta.env.VITE_API_URL?.replace(/\/$/, '') || 'http://localhost:8080';
+  const API_URL = import.meta.env.VITE_API_URL?.replace(/\/$/, '') || 'http://backend.com/api/v1';
   
   const [data, setData] = useState<Student[]>([]);
 useEffect(() => {

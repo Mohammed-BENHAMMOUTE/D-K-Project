@@ -4,11 +4,11 @@ metadata:
   name: frontend-service
   namespace: exam
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: frontend
   ports:
-    - name: http
+    - protocol: TCP
       port: 80
       targetPort: 80
-      protocol: TCP
+      nodePort: 30005

@@ -3,8 +3,5 @@ kind: ConfigMap
 metadata:
   name: frontend-config
   namespace: exam
-  labels:
-    app: frontend
-    component: config
 data:
-  VITE_API_URL: "http://aseds.inpt.com/api"
+  VITE_API_URL: "http://backend.com/api/v1"
