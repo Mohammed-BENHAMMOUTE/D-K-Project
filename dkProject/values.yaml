@@ -1,0 +1,63 @@
+namespace: helm
+
+frontend:
+  config:
+    apiUrl: "http://backend-service:8080/api"
+  image:
+    repository: mohammedbenhammoute/frontend
+    tag: "1.8"
+  service:
+    type: ClusterIP
+    port: 80
+  replicas: 2
+  resources:
+    requests:
+      cpu: "200m"
+      memory: "256Mi"
+    limits:
+      cpu: "400m"
+      memory: "512Mi"
+
+backend:
+  image:
+    repository: mohammedbenhammoute/backend
+    tag: "2.0"
+  service:
+    type: ClusterIP
+    port: 8080
+  replicas: 2
+  resources:
+    requests:
+      cpu: "200m"
+      memory: "256Mi"
+    limits:
+      cpu: "400m"
+      memory: "512Mi"
+
+postgresql:
+  enabled: true
+  image:
+    repository: postgres
+    tag: "15.3"
+    pullPolicy: IfNotPresent
+  user: "myuser"
+  password: "mypass"
+  db: "mydatabase"
+  service:
+    port: 5432
+  persistence:
+    accessModes: ["ReadWriteOnce"]
+    storageClass: "standard"
+    size: 1Gi
+  resources:
+    requests:
+      cpu: "200m"
+      memory: "256Mi"
+    limits:
+      cpu: "400m"
+      memory: "512Mi"
+
+
+ingress:
+  frontendHost: "frontend.local"
+  backendHost: "backend.local"

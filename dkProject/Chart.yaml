@@ -1,0 +1,9 @@
+apiVersion: v2
+name: dkProject
+description: A Helm chart for my dkProject
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+maintainers:
+  - name: mohammedbenhammoute
+    email: mohammedbenhammoute0@gmail.com
