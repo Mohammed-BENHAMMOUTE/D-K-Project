@@ -1,6 +1,12 @@
+# Traefik reverse proxy setup
+# Handles SSL termination and automatic service discovery
+
 services:
+  # Main reverse proxy service
+  # Running on manager nodes and exposing ports 80/443
   reverse-proxy:
     image: traefik:v2.11
+    # Debug mode enabled for now - will disable in prod
     command:
       - "--api.insecure=true"
       - "--providers.docker=true"
@@ -11,6 +17,8 @@ services:
       - "--entrypoints.websecure.address=:443"
       - "--accesslog=true"
       - "--log.level=DEBUG"
+    
+    # Need these ports exposed on the host
     ports:
       - target: 80
         published: 80
@@ -19,13 +27,16 @@ services:
         published: 443
         mode: host
       - target: 8080
-        published: 8080
+        published: ${TRAEFIK_DASHBOARD_PORT}
         mode: host
+
+    # Mount docker socket to watch for services
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./data/acme.json:/acme.json
-    networks:
-      - traefik
+
+    # Using replicated mode with 1 instance
+    # Only runs on manager nodes for security
     deploy:
       mode: replicated
       replicas: 1
@@ -34,11 +45,12 @@ services:
           - node.role == manager
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.dashboard.rule=Host(`traefik.aseds.inpt.com`)"
+        - "traefik.http.routers.dashboard.rule=Host(`${TRAEFIK_DOMAIN}`)"
         - "traefik.http.routers.dashboard.service=api@internal"
         - "traefik.http.routers.dashboard.entrypoints=web"
         - "traefik.http.services.dashboard.loadbalancer.server.port=8080"
 
+# External network that other stacks will use
 networks:
   traefik:
     external: true

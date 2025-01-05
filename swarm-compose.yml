@@ -1,4 +1,9 @@
+# Production stack with high availability and load balancing
+# Using Docker Swarm for orchestration and Traefik for routing
+
 services:
+  # Frontend running on manager nodes for security
+  # Scaled to 2 replicas for redundancy
   frontend:
     image: mohammedbenhammoute/frontend:1.0
     deploy:
@@ -8,12 +13,15 @@ services:
           - node.role == manager
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.frontend.rule=Host(`aseds.inpt.com`)"
+        # Route traffic from aseds.inpt.com to this service
+        - "traefik.http.routers.frontend.rule=Host(`${DOMAIN}`)"
         - "traefik.http.services.frontend.loadbalancer.server.port=80"
         - "traefik.http.routers.frontend.entrypoints=web"
     networks:
       - traefik
 
+  # Backend API service with 3 replicas
+  # Using Traefik labels for automatic routing
   backend:
     image: mohammedbenhammoute/backend:1.0
     deploy:
@@ -21,14 +29,16 @@ services:
       labels:
         - "traefik.enable=true"
         - "traefik.docker.network=traefik"
-        - "traefik.http.routers.backend.rule=Host(`api.aseds.inpt.com`)"
-        - "traefik.http.services.backend.loadbalancer.server.port=8080"
+        # Route api.aseds.inpt.com to backend service
+        - "traefik.http.routers.backend.rule=Host(`${API_DOMAIN}`)"
+        - "traefik.http.services.backend.loadbalancer.server.port=${BACKEND_PORT}"
     environment:
+      # Database connection settings
       - DB_HOST=pgpool
       - DB_PORT=5432
-      - DB_NAME=my_database
-      - DB_USER=postgres
-      - DB_PASSWORD=postgres123
+      - DB_NAME=${POSTGRES_DB}
+      - DB_USER=${POSTGRES_USER}
+      - DB_PASSWORD=${POSTGRES_PASSWORD}
     networks:
       - traefik
     healthcheck:
@@ -37,15 +47,18 @@ services:
       timeout: 5s
       retries: 3
 
+  # Primary Postgres - this is my write master
+  # Only one instance because we need consistent writes
   postgres-primary:
     image: postgres:17-alpine
     deploy:
       replicas: 1
     environment:
-      - POSTGRES_DB=my_database
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres123
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:
+      # Persist data even if container restarts
       - postgres_primary_data:/var/lib/postgresql/data
     networks:
       - traefik
@@ -54,14 +67,16 @@ services:
       interval: 10s
       timeout: 5s
 
+  # Read replica for scaling reads
+  # Can add more replicas if needed
   postgres-replica:
     image: postgres:17-alpine
     deploy:
       replicas: 1
     environment:
-      - POSTGRES_DB=my_database
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres123
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:
       - postgres_replica_data:/var/lib/postgresql/data
     networks:
@@ -71,18 +86,22 @@ services:
       interval: 10s
       timeout: 5s
 
+  # PgPool for connection pooling and load balancing
+  # Handles the primary/replica routing automatically
   pgpool:
     image: bitnami/pgpool:latest
     deploy:
       replicas: 1
     environment:
+      # Configure primary and replica nodes
       - PGPOOL_BACKEND_NODES=0:postgres-primary:5432,1:postgres-replica:5432
-      - PGPOOL_SR_CHECK_USER=postgres
-      - PGPOOL_SR_CHECK_PASSWORD=postgres123
-      - PGPOOL_POSTGRES_USERNAME=postgres
-      - PGPOOL_POSTGRES_PASSWORD=postgres123
+      - PGPOOL_SR_CHECK_USER=${POSTGRES_USER}
+      - PGPOOL_SR_CHECK_PASSWORD=${POSTGRES_PASSWORD}
+      - PGPOOL_POSTGRES_USERNAME=${POSTGRES_USER}
+      - PGPOOL_POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - PGPOOL_ADMIN_USERNAME=admin
       - PGPOOL_ADMIN_PASSWORD=admin123
+      # Enable read/write splitting
       - PGPOOL_ENABLE_LOAD_BALANCING=yes
       - PGPOOL_MAX_POOL=20
     networks:
@@ -92,12 +111,14 @@ services:
       interval: 10s
       timeout: 5s
 
+# Persistent volumes for database data
 volumes:
   postgres_primary_data:
     driver: local
   postgres_replica_data:
     driver: local
 
+# External traefik network for reverse proxy
 networks:
   traefik:
     external: true

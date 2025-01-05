@@ -1,6 +1,6 @@
 # Stage 1: Build
 # Use a specific version of Maven with Eclipse Temurin JDK 17 on Alpine Linux for a smaller image size
-FROM maven:3.9.9-eclipse-temurin-17-alpine@sha256:bff43a9e4b4365b986c8e5050b9e5a5f1b1c6729365beb42c5a5f7cf2009a4e7 AS builder
+FROM maven:3.9.9-eclipse-temurin-17-alpine@sha256:8b5926289c78bb49477b4d2612ed3448ff02c477795f0f80e35c375680d649bd AS builder
 
 # Enhanced Metadata Labels for better image documentation and traceability
 LABEL maintainer="Mohammed Benhammoute" \
